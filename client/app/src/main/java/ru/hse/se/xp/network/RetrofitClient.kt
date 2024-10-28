@@ -1,6 +1,5 @@
 package ru.hse.se.xp.network
 
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -63,7 +62,7 @@ object RetrofitClient {
         onFailure: (() -> Unit)? = null
     ) {
         invokeCall(
-            retrofitCall.getList(list_id),
+            retrofitCall.getList(listId),
             onSuccess,
             onFailure
         )

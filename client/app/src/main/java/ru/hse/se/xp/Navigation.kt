@@ -22,13 +22,13 @@ private sealed class NavScreen(val route: String) {
 
     data object MainScreen : NavScreen(route = "main")
 
-    class ListScreen(listId: Int, listTitle: String) :
+    class ListScreen(listId: String, listTitle: String) :
         NavScreen(route = "info/$listId/$listTitle") {
         companion object {
             const val ARGUMENT_ID = "listId"
             const val ARGUMENT_TITLE = "listTitle"
-//            val routeWithArgument =
-//                ListScreen("{$ARGUMENT_ID}", "{$ARGUMENT_TITLE}").route
+            val routeWithArgument =
+                ListScreen("{$ARGUMENT_ID}", "{$ARGUMENT_TITLE}").route
         }
     }
 }
@@ -58,7 +58,7 @@ fun App(navController: NavHostController = rememberNavController()) {
         }
 
         composable(
-            route = NavScreen.ListScreen(-1, "").route,
+            route = NavScreen.ListScreen.routeWithArgument,
             arguments = listOf(
                 navArgument(NavScreen.ListScreen.ARGUMENT_ID) {
                     type = NavType.IntType
@@ -68,11 +68,11 @@ fun App(navController: NavHostController = rememberNavController()) {
                 }
             )
         ) { backStackEntry ->
-            val listId = backStackEntry.arguments?.getInt(NavScreen.ListScreen.ARGUMENT_ID)!!
+            val listId = backStackEntry.arguments?.getString(NavScreen.ListScreen.ARGUMENT_ID)!!
             val listTitle = backStackEntry.arguments?.getString(NavScreen.ListScreen.ARGUMENT_TITLE)!!
 
             ListScreen(
-                listId,
+                listId.toInt(),
                 listTitle,
                 backToScreen = {
                     backToMainScreen(navController)
