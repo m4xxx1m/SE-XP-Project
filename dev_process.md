@@ -1,3 +1,9 @@
+# Дополнительные материалы
+
+https://docs.google.com/document/d/1saEg7sWWi3IHI5QoGPtQ1rnHodyFMJlA6VycMucmZ_A/edit?usp=sharing
+
+# Требования
+
 ## Функциональные требования
 
 1. Регистрация и авторизация
