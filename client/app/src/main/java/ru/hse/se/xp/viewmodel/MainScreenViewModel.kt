@@ -22,6 +22,26 @@ class MainScreenViewModel : ViewModel() {
                 )
             }
         }
-        RetrofitClient.getUserLists(CurrentUser.userId!!)
+        RetrofitClient.getUserLists(
+            CurrentUser.userId!!,
+            onSuccess = { body ->
+                if (body != null) {
+                    _uiState.update { oldValue ->
+                        oldValue.copy(
+                            lists = body,
+                            status = true
+                        )
+                    }
+                }
+            },
+            onFailure = {
+                _uiState.update { oldValue ->
+                    oldValue.copy(
+                        lists = null,
+                        status = false
+                    )
+                }
+            }
+        )
     }
 }
