@@ -1,6 +1,8 @@
-# SE Project Server
+# ListFon
 
-SE Project Server is a Spring Boot-based server application that provides a REST API for managing user lists. The application supports basic CRUD operations to interact with lists associated with users.
+ListFon is a Spring Boot-based server application that provides a REST API for managing user lists. The application supports basic CRUD operations to interact with lists associated with users.
+ [Google Document with screenshots](https://docs.google.com/document/d/1saEg7sWWi3IHI5QoGPtQ1rnHodyFMJlA6VycMucmZ_A/edit?tab=t.0).
+
 
 ## Technology Stack
 
