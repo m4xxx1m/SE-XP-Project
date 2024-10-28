@@ -5,7 +5,7 @@ SE Project Server is a Spring Boot-based server application that provides a REST
 ## Technology Stack
 
 - **Java 20**: Main programming language
-- **Spring Boot**: Version 2.x for creating RESTful API
+- **Spring Boot**: Framework for creating RESTful API
 - **JPA/Hibernate**: For database interaction
 - **PostgreSQL**: Embedded database for development and testing
 - **JUnit and Mockito**: For unit testing
