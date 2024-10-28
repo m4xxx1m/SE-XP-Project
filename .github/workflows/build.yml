@@ -56,16 +56,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21 for Spring Boot
+      - name: Set up JDK 20 for Spring Boot
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
-          java-version: '21'
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
-      - name: Build Spring Boot project
-        working-directory: server
-        run: ./mvnw clean package
+      - name: Build with Gradle
+        run: ./gradlew clean build --no-daemon
 
-      - name: Run Spring Boot tests
-        working-directory: server
-        run: ./mvnw test
+      - name: Run Tests
+        run: ./gradlew test --no-daemon
