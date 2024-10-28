@@ -37,7 +37,7 @@ private sealed class NavScreen(val route: String) {
 fun App(navController: NavHostController = rememberNavController()) {
     NavHost(
         navController = navController,
-        startDestination = NavScreen.LoginScreen.route,
+        startDestination = NavScreen.ListScreen("0", "title").route,
         modifier = Modifier.fillMaxSize()
     ) {
 
@@ -58,7 +58,7 @@ fun App(navController: NavHostController = rememberNavController()) {
         }
 
         composable(
-            route = NavScreen.ListScreen.routeWithArgument,
+            route = NavScreen.LoginScreen.route,
             arguments = listOf(
                 navArgument(NavScreen.ListScreen.ARGUMENT_ID) {
                     type = NavType.IntType
@@ -67,13 +67,16 @@ fun App(navController: NavHostController = rememberNavController()) {
                     type = NavType.StringType
                 }
             )
-        ) { backStackEntry ->
-            val listId = backStackEntry.arguments?.getString(NavScreen.ListScreen.ARGUMENT_ID)!!
-            val listTitle = backStackEntry.arguments?.getString(NavScreen.ListScreen.ARGUMENT_TITLE)!!
+        ) {
+//        ) { backStackEntry ->
+//            val listId = backStackEntry.arguments?.getString(NavScreen.ListScreen.ARGUMENT_ID)!!
+//            val listTitle = backStackEntry.arguments?.getString(NavScreen.ListScreen.ARGUMENT_TITLE)!!
 
             ListScreen(
-                listId.toInt(),
-                listTitle,
+//                listId.toInt(),
+//                listTitle,
+                0,
+                "title",
                 backToScreen = {
                     backToMainScreen(navController)
                 }

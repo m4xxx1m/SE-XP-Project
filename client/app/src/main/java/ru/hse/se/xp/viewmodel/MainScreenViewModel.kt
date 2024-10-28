@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import ru.hse.se.xp.model.CurrentUser
+import ru.hse.se.xp.model.UserList
 import ru.hse.se.xp.network.RetrofitClient
 
 class MainScreenViewModel : ViewModel() {
@@ -22,6 +23,19 @@ class MainScreenViewModel : ViewModel() {
                 )
             }
         }
+//        val lists: List<UserList> = listOf(
+//            UserList(0, "Дедлайны", user_id = 0),
+//            UserList(1, "Список покупок", user_id = 0),
+//            UserList(0, "фывапролджэ", user_id = 0),
+//            UserList(0, "lorem ipsum", user_id = 0),
+//            )
+//        _uiState.update { oldValue ->
+//            oldValue.copy(
+//                lists = lists,
+//                status = true
+//            )
+//        }
+
         RetrofitClient.getUserLists(
             CurrentUser.userId!!,
             onSuccess = { body ->

@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -55,7 +56,7 @@ fun MainScreen(toListScreen: ((String, String) -> Unit)? = null) {
 
 @Composable
 fun Lists(lists: List<UserList>, toListScreen: ((String, String) -> Unit)?) {
-    LazyColumn {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(lists) { list ->
             ListItem(list, toListScreen)
         }
@@ -65,6 +66,7 @@ fun Lists(lists: List<UserList>, toListScreen: ((String, String) -> Unit)?) {
 @Composable
 fun ListItem(list: UserList, toListScreen: ((String, String) -> Unit)?) {
     Row(modifier = Modifier
+        .fillMaxWidth()
         .clickable { toListScreen?.invoke(list.id.toString(), list.title) }
         .padding(horizontal = 12.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically
